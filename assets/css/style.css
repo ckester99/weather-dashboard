@@ -3,6 +3,7 @@
     --nav-grad-right: #261360;
     --search-button-color: #6991e3;
     --light-grey: #aeaeae;
+    --card-bg: #323d4f;
 }
 
 body {
@@ -14,5 +15,10 @@ nav {
 }
 
 .card-custom {
-    height: 15vh;
+    background-color: var(--card-bg);
+    color: white;
+}
+
+.card-custom p {
+    margin-bottom: 0.5em;
 }
