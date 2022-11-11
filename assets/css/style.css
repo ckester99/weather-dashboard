@@ -1,0 +1,18 @@
+:root {
+    --nav-grad-left: #465ab8;
+    --nav-grad-right: #261360;
+    --search-button-color: #6991e3;
+    --light-grey: #aeaeae;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    background-image: linear-gradient(to right, var(--nav-grad-left), var(--nav-grad-right));
+}
+
+.card-custom {
+    height: 15vh;
+}
