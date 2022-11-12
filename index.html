@@ -22,19 +22,27 @@
         <nav style="height: 7vh"><h1 class="text-light text-center position-relative top-50 translate-middle-y">Weather Dashboard</h1></nav>
         <div class="container-fluid">
             <div class="row">
-                <div id="city-search" class="col-12 col-lg-2 bg-danger p-3">
-                    <form action="" class="bg-warning mb-3">
-                        <label class="form-label col-12">Search for a City:</label>
+                <div id="city-search" class="col-12 col-lg-2 p-3">
+                    <form action="" class="mb-3 border border-dark border-2 rounded-3 px-2 py-2 px-lg-3">
+                        <label class="form-label col-12 lh-1 mb-4">Search for a City:</label>
 
-                        <input type="text" class="mb-3 bg-dark position-relative translate-middle-x start-50" style="width: 92%" />
-                        <button type="submit" class="mb-3 py-1 px-5 position-relative translate-middle-x start-50">Search</button>
+                        <input type="text" class="mb-3 position-relative translate-middle-x start-50 rounded-2" />
+                        <button type="submit" class="mb-3 py-1 px-5 position-relative translate-middle-x start-50 rounded-5 text-light">
+                            Search
+                        </button>
                     </form>
                     <div style="height: 3px; background-color: var(--light-grey); width: 100%"></div>
                     <ul id="search-history"></ul>
                 </div>
-                <div id="weather-display" class="container col-12 col-lg-10 bg-dark p-3">
-                    <div id="current-day-display" class="bg-warning">t</div>
-                    <div id="five-day-forecast" class="container-fluid bg-light">
+                <div id="weather-display" class="container col-12 col-lg-10 p-3">
+                    <div id="current-day-display" class="px-3 py-2 border border-dark border-2 rounded-3">
+                        <h2>City</h2>
+                        <p>Temp</p>
+                        <p>Wind</p>
+                        <p>Hum</p>
+                    </div>
+                    <div id="five-day-forecast" class="container-fluid">
+                        <div class="row"><h2 class="mt-2 mb-0">5-Day Forecast:</h2></div>
                         <div class="row justify-content-around p-3 px-lg-0">
                             <div id="day-one" class="card card-custom py-2 col-12 col-lg-2 mb-3 mb-lg-0">
                                 <h3>Monday</h3>
