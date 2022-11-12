@@ -14,6 +14,11 @@ nav {
     background-image: linear-gradient(to right, var(--nav-grad-left), var(--nav-grad-right));
 }
 
+/*////////////////FORM STYLING////////////////////////////////*/
+form button {
+    background-color: var(--search-button-color);
+}
+
 .card-custom {
     background-color: var(--card-bg);
     color: white;
