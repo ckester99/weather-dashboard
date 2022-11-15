@@ -1,0 +1,56 @@
+:root {
+    --nav-grad-left: #465ab8;
+    --nav-grad-right: #261360;
+    --search-button-color: #6991e3;
+    --light-grey: #aeaeae;
+    --card-bg: #323d4f;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    background-image: linear-gradient(to right, var(--nav-grad-left), var(--nav-grad-right));
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button {
+    background-color: var(--search-button-color);
+}
+
+/*////////////////FORM STYLING////////////////////////////////*/
+
+form label {
+    font-size: 30px;
+    font-weight: 800;
+}
+
+form input {
+    background-color: white;
+    border: 2px solid var(--light-grey);
+    font-size: 20px;
+    width: 92%;
+}
+
+/*/ ///////////////CURRENT CITY STYLING////////////////////////*/
+#current-day-display h2 {
+    font-weight: 800;
+}
+
+#current-day-display {
+    font-weight: 600;
+}
+/*/ ///////////////CARD STYLING////////////////////////////////*/
+.card-custom {
+    background-color: var(--card-bg);
+    color: white;
+    font-weight: 600;
+}
+
+.card-custom p {
+    margin-bottom: 0.5em;
+}

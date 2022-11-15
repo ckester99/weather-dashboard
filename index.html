@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Dashboard</title>
+        <title>Document</title>
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+            crossorigin="anonymous" />
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"
+            integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    </head>
+    <body class="h-100">
+        <nav style="height: 7vh"><h1 class="text-light text-center position-relative top-50 translate-middle-y">Weather Dashboard</h1></nav>
+        <div class="container-fluid">
+            <div class="row">
+                <div id="city-search" class="col-12 col-lg-2 p-3">
+                    <form action="" class="mb-3 border border-dark border-2 rounded-3 px-2 py-2 px-lg-3">
+                        <label class="form-label col-12 lh-1 mb-4">Search for a City:</label>
+
+                        <input type="text" class="mb-3 position-relative translate-middle-x start-50 rounded-2" />
+                        <button type="submit" class="mb-3 py-1 px-5 position-relative translate-middle-x start-50 rounded-5 text-light">
+                            Search
+                        </button>
+                    </form>
+                    <div style="height: 3px; background-color: var(--light-grey); width: 100%" class="mb-3"></div>
+                    <div id="search-history" class="container"></div>
+                </div>
+                <div id="weather-display" class="container col-12 col-lg-10 p-3">
+                    <div id="current-day-display" class="px-3 py-2 border border-dark border-2 rounded-3">
+                        <h2 style="display: inline">Enter a city to see the weather</h2>
+                        <img src="" alt="" />
+                        <p></p>
+                        <p></p>
+                        <p></p>
+                    </div>
+                    <div id="five-day-forecast" class="container-fluid">
+                        <div class="row"><h2 class="mt-2 mb-0">5-Day Forecast:</h2></div>
+                        <div class="row justify-content-around p-3 px-lg-0">
+                            <div id="day-one" class="card card-custom py-2 col-12 col-lg-2 mb-3 mb-lg-0">
+                                <h3></h3>
+                                <img src="" alt="" />
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div id="day-two" class="card card-custom py-2 col-12 col-lg-2 mb-3 mb-lg-0">
+                                <h3></h3>
+                                <img src="" alt="" />
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div id="day-three" class="card card-custom py-2 col-12 col-lg-2 mb-3 mb-lg-0">
+                                <h3></h3>
+                                <img src="" alt="" />
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div id="day-four" class="card card-custom py-2 col-12 col-lg-2 mb-3 mb-lg-0">
+                                <h3></h3>
+                                <img src="" alt="" />
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                            <div id="day-five" class="card card-custom py-2 col-12 col-lg-2">
+                                <h3></h3>
+                                <img src="" alt="" />
+                                <p></p>
+                                <p></p>
+                                <p></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="./assets/js/script.js"></script>
+    </body>
+</html>
