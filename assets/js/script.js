@@ -9,7 +9,7 @@ async function handleFormSubmit(event) {
     event.preventDefault();
     var textInput = $("input[type=text]");
     var city = textInput.val();
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=934e2a893482bf1e8b8f916e9379281e";
+    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
     var geocodes = await fetch(requestUrl).then(function (response) {
         return response.json();
     });
@@ -17,12 +17,20 @@ async function handleFormSubmit(event) {
     if (geocodes.length === 0) {
         console.log("here");
     } else {
-        console.log(geocodes);
+        displayWeather(geocodes[0]["name"], geocodes[0]["lat"], geocodes[0]["lon"]);
     }
 }
 
-async function getGeoCodes(city) {
-    return geocodes;
+async function displayWeather(city, lat, lon) {
+    console.log(lat);
+    console.log(lon);
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+    var curWeather = await fetch(requestUrl).then(function (response) {
+        return response.json();
+    });
+    currentDayDisp.children("h2").html(city + " (" + dayjs().format("M/D/YYYY") + ")");
+    var dayIcon = currentDayDisp.children("img");
+    dayIcon.attr("src", "http://openweathermap.org/img/wn/" + curWeather.weather[0].icon + "@2x.png");
+    dayIcon.attr("alt", "Weather Icon");
+    dayIcon.attr("width", "70px");
 }
-
-function displayWeather(lat, lon) {}

@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather Dashboard</title>
         <title>Document</title>
         <link rel="stylesheet" href="./assets/css/reset.css" />
         <link
@@ -17,6 +18,7 @@
             integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA=="
             crossorigin="anonymous"
             referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     </head>
     <body class="h-100">
         <nav style="height: 7vh"><h1 class="text-light text-center position-relative top-50 translate-middle-y">Weather Dashboard</h1></nav>
@@ -36,8 +38,9 @@
                 </div>
                 <div id="weather-display" class="container col-12 col-lg-10 p-3">
                     <div id="current-day-display" class="px-3 py-2 border border-dark border-2 rounded-3">
-                        <h2>City</h2>
-                        <p>Temp</p>
+                        <h2 style="display: inline">City</h2>
+                        <img src="" alt="" />
+                        <p class="mt-2">Temp</p>
                         <p>Wind</p>
                         <p>Hum</p>
                     </div>
