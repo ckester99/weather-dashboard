@@ -9,15 +9,20 @@ async function handleFormSubmit(event) {
     event.preventDefault();
     var textInput = $("input[type=text]");
     var city = textInput.val();
-    var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
-    var geocodes = await fetch(requestUrl).then(function (response) {
-        return response.json();
-    });
-
-    if (geocodes.length === 0) {
-        console.log("here");
+    if (city === "") {
+        alert("Please enter a city name!");
     } else {
-        searchWeather(geocodes[0]["name"], geocodes[0]["lat"], geocodes[0]["lon"]);
+        var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
+        var geocodes = await fetch(requestUrl).then(function (response) {
+            return response.json();
+        });
+
+        if (geocodes.length === 0) {
+            alert("Please enter a valid city");
+        } else {
+            searchWeather(geocodes[0]["name"], geocodes[0]["lat"], geocodes[0]["lon"]);
+            textInput.val("");
+        }
     }
 }
 
