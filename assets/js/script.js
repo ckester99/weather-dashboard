@@ -13,7 +13,7 @@ async function handleFormSubmit(event) {
     if (city === "") {
         alert("Please enter a city name!");
     } else {
-        var requestUrl = "http://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
+        var requestUrl = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + apiKey;
         var geocodes = await fetch(requestUrl).then(function (response) {
             return response.json();
         });
@@ -36,7 +36,7 @@ async function displayWeather(city, lat, lon) {
     });
     currentDayDisp.children("h2").html(city + " (" + dayjs().format("M/D/YYYY") + ")");
     var dayIcon = currentDayDisp.children("img");
-    dayIcon.attr("src", "http://openweathermap.org/img/wn/" + curWeather.weather[0].icon + "@2x.png");
+    dayIcon.attr("src", "https://openweathermap.org/img/wn/" + curWeather.weather[0].icon + "@2x.png");
     dayIcon.attr("alt", "Weather Icon");
     dayIcon.attr("width", "70px");
     $(currentDayDisp.children("p")[0]).text("Temp: " + curWeather.main.temp + " °F");
@@ -53,7 +53,7 @@ async function displayWeather(city, lat, lon) {
             .children("h3")
             .text("(" + dayjs.unix(forecast[i * 8 + 7].dt).format("M/D/YYYY") + ")");
         var dayIcon = $(forecastCards[i]).children("img");
-        dayIcon.attr("src", "http://openweathermap.org/img/wn/" + forecast[i * 8 + 7].weather[0].icon + "@2x.png");
+        dayIcon.attr("src", "https://openweathermap.org/img/wn/" + forecast[i * 8 + 7].weather[0].icon + "@2x.png");
         dayIcon.attr("alt", "Weather Icon");
         dayIcon.attr("width", "50px");
         $($(forecastCards[i]).children("p")[0]).text("Temp: " + forecast[i * 8 + 7].main.temp + " °F");
