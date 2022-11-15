@@ -17,28 +17,47 @@ async function handleFormSubmit(event) {
     if (geocodes.length === 0) {
         console.log("here");
     } else {
-        displayWeather(geocodes[0]["name"], geocodes[0]["lat"], geocodes[0]["lon"]);
+        searchWeather(geocodes[0]["name"], geocodes[0]["lat"], geocodes[0]["lon"]);
     }
 }
 
-async function displayWeather(city, lat, lon) {
+async function searchWeather(city, lat, lon) {
     console.log(lat);
     console.log(lon);
-    var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
-    var forecast = await fetch(requestUrl).then(function (response) {
+    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+
+    var curWeather = await fetch(requestUrl).then(function (response) {
         return response.json();
     });
     currentDayDisp.children("h2").html(city + " (" + dayjs().format("M/D/YYYY") + ")");
     var dayIcon = currentDayDisp.children("img");
-    forecast = forecast.list;
-    console.log(forecast);
-    dayIcon.attr("src", "http://openweathermap.org/img/wn/" + forecast[0].weather[0].icon + "@2x.png");
+    dayIcon.attr("src", "http://openweathermap.org/img/wn/" + curWeather.weather[0].icon + "@2x.png");
     dayIcon.attr("alt", "Weather Icon");
     dayIcon.attr("width", "70px");
     console.log(currentDayDisp.children("p"));
-    $(currentDayDisp.children("p")[0]).text("Temp: " + forecast[0].main.temp + " °F");
-    $(currentDayDisp.children("p")[1]).text("Wind: " + forecast[0].wind.speed + " MPH");
-    $(currentDayDisp.children("p")[2]).text("Humidity: " + forecast[0].main.humidity + " %");
+    $(currentDayDisp.children("p")[0]).text("Temp: " + curWeather.main.temp + " °F");
+    $(currentDayDisp.children("p")[1]).text("Wind: " + curWeather.wind.speed + " MPH");
+    $(currentDayDisp.children("p")[2]).text("Humidity: " + curWeather.main.humidity + " %");
 
-    console.log(dayjs.unix(forecast[0].dt));
+    requestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+    var forecast = await fetch(requestUrl).then(function (response) {
+        return response.json();
+    });
+    forecast = forecast.list;
+    console.log(forecast);
+    console.log(forecast.length);
+    for (var i = 0; i < forecastCards.length; i++) {
+        $(forecastCards[i])
+            .children("h3")
+            .text("(" + dayjs.unix(forecast[i * 8 + 7].dt).format("M/D/YYYY") + ")");
+        var dayIcon = $(forecastCards[i]).children("img");
+        dayIcon.attr("src", "http://openweathermap.org/img/wn/" + forecast[i * 8 + 7].weather[0].icon + "@2x.png");
+        dayIcon.attr("alt", "Weather Icon");
+        dayIcon.attr("width", "50px");
+        $($(forecastCards[i]).children("p")[0]).text("Temp: " + forecast[i * 8 + 7].main.temp + " °F");
+        $($(forecastCards[i]).children("p")[1]).text("Wind: " + forecast[i * 8 + 7].wind.speed + " MPH");
+        $($(forecastCards[i]).children("p")[2]).text("Humidity: " + forecast[i * 8 + 7].main.humidity + " %");
+    }
+
+    console.log(dayjs.unix(curWeather.dt));
 }
