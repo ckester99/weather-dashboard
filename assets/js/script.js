@@ -24,13 +24,21 @@ async function handleFormSubmit(event) {
 async function displayWeather(city, lat, lon) {
     console.log(lat);
     console.log(lon);
-    var requestUrl = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
-    var curWeather = await fetch(requestUrl).then(function (response) {
+    var requestUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+    var forecast = await fetch(requestUrl).then(function (response) {
         return response.json();
     });
     currentDayDisp.children("h2").html(city + " (" + dayjs().format("M/D/YYYY") + ")");
     var dayIcon = currentDayDisp.children("img");
-    dayIcon.attr("src", "http://openweathermap.org/img/wn/" + curWeather.weather[0].icon + "@2x.png");
+    forecast = forecast.list;
+    console.log(forecast);
+    dayIcon.attr("src", "http://openweathermap.org/img/wn/" + forecast[0].weather[0].icon + "@2x.png");
     dayIcon.attr("alt", "Weather Icon");
     dayIcon.attr("width", "70px");
+    console.log(currentDayDisp.children("p"));
+    $(currentDayDisp.children("p")[0]).text("Temp: " + forecast[0].main.temp + " °F");
+    $(currentDayDisp.children("p")[1]).text("Wind: " + forecast[0].wind.speed + " MPH");
+    $(currentDayDisp.children("p")[2]).text("Humidity: " + forecast[0].main.humidity + " %");
+
+    console.log(dayjs.unix(forecast[0].dt));
 }
